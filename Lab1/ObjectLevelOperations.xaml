@@ -1,0 +1,33 @@
+﻿<Window x:Class="WpfApp1.ObjectLevelOperations"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp1"
+        mc:Ignorable="d"
+        Title="ObjectLevelOperations" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="objectsGrid" Margin="0,150,240,0" AutoGenerateColumns="False" ScrollViewer.CanContentScroll="True" VerticalScrollBarVisibility="Auto">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Key}"
+                                        Header="Object Name"
+                                        Width="Auto"
+                                        IsReadOnly="True"/>
+                <DataGridTextColumn Binding="{Binding Size}"
+                                        Header="Size"
+                                        Width="*" />
+
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Bucket" HorizontalAlignment="Left" Margin="78,17,0,0" VerticalAlignment="Top"/>
+        <Label Content="Object" HorizontalAlignment="Left" Margin="78,75,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="filePathTextBox" HorizontalAlignment="Left" Margin="160,83,0,0" Text="" TextWrapping="Wrap" VerticalAlignment="Top" Width="400"/>
+        <ComboBox DisplayMemberPath="BucketName" x:Name="comboBox"  HorizontalAlignment="Left" Margin="187,27,0,0" VerticalAlignment="Top" Width="373" SelectionChanged="ComboBoxSelectionChanged"/>
+        <Button Content="Browse" HorizontalAlignment="Left" Margin="636,58,0,0" VerticalAlignment="Top" Height="57" Width="135" Click="BrowseButton_Click"/>
+        <Button Content="Upload" HorizontalAlignment="Left" Margin="636,120,0,0" VerticalAlignment="Top" Height="57" Width="135" Click="UploadButton_Click"/>
+        <Button Content="Back to Main Window" HorizontalAlignment="Left" Margin="587,308,0,0" VerticalAlignment="Top" Height="57" Width="184" Click="BackButton_Click"/>
+        <TextBox HorizontalAlignment="Left" Margin="587,182,0,0" Text="" x:Name="uploadStatusLabel" TextWrapping="Wrap" VerticalAlignment="Top" Width="184" Height="110"/>
+
+
+    </Grid>
+</Window>

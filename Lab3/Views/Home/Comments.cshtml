@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Lab3.Models.Comment>
+
+@{
+    ViewData["Title"] = "Comments";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Comments</h1>
+
+<p>
+    <a asp-action="EditComment">Add Comment</a>
+</p>
+    @foreach (var item in Model)
+    {
+        <div class="card my-1" >
+            <div class="card-body">
+                <h5 class="card-title">@Html.DisplayFor(modelItem => item.comment)</h5>
+
+                <p class="card-text"> @Html.DisplayFor(modelItem => item.useremail)</p>
+                @if (item.canEdit)
+                {
+                        @Html.ActionLink("Edit", "EditComment", new { uuid = item.uuid })
+                }
+            </div>
+        </div>
+    }

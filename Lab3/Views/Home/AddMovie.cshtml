@@ -1,0 +1,44 @@
+﻿@model Lab3.Models.Movie
+
+@{
+    ViewData["Title"] = "AddMovie";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Add Movie</h1>
+
+<h4>Movie</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AddMovie" enctype="multipart/form-data" method="post">
+                <input asp-for="uuid" class="form-control" name="uuid" hidden/>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="title" class="control-label"></label>
+                <input asp-for="title" class="form-control" name="title"/>
+                <span asp-validation-for="title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="released_data" class="control-label"></label>
+                <input asp-for="released_data" class="form-control"  name="releaseDate"/>
+                <span asp-validation-for="released_data" class="text-danger"></span>
+            </div> <div class="form-group">
+    <label class="control-label" asp-for="FormFile"></label>
+        <input class="form-control" asp-for="FormFile" name="file" type="file">
+        <span asp-validation-for="FormFile"></span>
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Movies">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

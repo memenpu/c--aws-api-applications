@@ -1,0 +1,65 @@
+﻿@model IEnumerable<Lab3.Models.Movie>
+
+@{
+    ViewData["Title"] = "MoviesList";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>MoviesList</h1>
+
+<p>
+    <a asp-action="AddMovie">Add Movie</a>
+</p>
+<form asp-action="SearchMovies" method="post">
+    <label>Search Movies By Rating Greater than</label>
+    <select class="form-select form-select" name="rating" aria-label=".form-select example">
+        <option selected value="0">0</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+        <option value="7">7</option>
+        <option value="8">8</option>
+        <option value="9">9</option>
+    </select>
+    <input type="submit" value="Serach" class="btn btn-primary btn-sm" />
+</form>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.title)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.AverageRating)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.released_data)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AverageRating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.released_data)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditMovie","Home", new {uuid=item.uuid}, null) |
+                @Html.ActionLink("Details", "EditMovie", "Home", new { uuid=item.uuid, movie=item, view="MovieDetail"}) |
+                @Html.ActionLink("Delete", "DeleteMovie", "Home", new {  uuid=item.uuid, key=item.s3_filename}, null)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

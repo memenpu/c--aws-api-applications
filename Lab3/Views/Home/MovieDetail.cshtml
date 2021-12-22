@@ -1,0 +1,61 @@
+﻿@model Lab3.Models.Movie
+
+@{
+    ViewData["Title"] = "Movie Detail";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Movie Detail</h1>
+<div>
+    <a asp-action="Movies">Back to List</a> |
+    @Html.ActionLink("Edit", "EditMovie", "Home", new { uuid = Model.uuid }, null)
+</div>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.uuid)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.uuid)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.title)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.title)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.released_data)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.released_data)
+        </dd>
+        <dt class="col-sm-2">
+            Download Movie
+        </dt>
+        <dd class="col-sm-10">
+            @Html.ActionLink("Download", "Download", "Home", new { filename = Model.s3_filename }, null)
+        </dd>
+        <dt class="col-sm-2">
+            Average Rating
+        </dt>
+        <dd class="col-sm-10">
+            <strong>  @Html.DisplayFor(model => model.AverageRating)</strong>
+        </dd>
+        <dt class="col-sm-2">
+            My Rating
+        </dt>
+        <dd class="col-sm-10">
+            <strong> @Html.DisplayFor(model => model.UserRating)</strong> | @Html.ActionLink("Update My Rating", "RateMovie", "Home", new { uuid = Model.uuid, rating=Model.UserRating}, null)
+        </dd>
+        <dt class="col-sm-2">
+            Comments
+        </dt>
+        <dd class="col-sm-10">
+            @Html.ActionLink(Model.comments.Count+ " Comments", "Comments", "Home", new { uuid = Model.uuid }, null)
+        </dd>
+    </dl>
+  
+</div>
+

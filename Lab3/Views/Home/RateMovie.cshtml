@@ -1,0 +1,47 @@
+﻿@model Lab3.Models.Rating
+
+@{
+    ViewData["Title"] = "RateMovie";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>RateMovie</h1>
+
+<h4>Rating</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="RateMovie">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group" hidden>
+                <label asp-for="useremail" class="control-label"></label>
+                <input asp-for="useremail" class="form-control" />
+                <span asp-validation-for="useremail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="rating" class="control-label">@Html.DisplayFor(Model=>Model.useremail)</label>
+                <select class="form-select form-select" name="rating" asp-for="rating" aria-label=".form-select example">
+                    <option selected value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+                <span asp-validation-for="rating" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="MovieDetail">Back</a>
+</div>
+
